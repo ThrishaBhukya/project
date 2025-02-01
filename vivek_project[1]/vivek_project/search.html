@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+        .search-bar {
+            margin: 50px auto;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .suggestions {
+            max-width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            list-style: none;
+            padding: 0;
+        }
+        .suggestions li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .suggestions li:hover {
+            background-color: #f0f2f5;
+        }
+    </style>
+    <script>
+        async function fetchSuggestions() {
+            const query = document.getElementById("search-input").value;
+            if (query.length > 0) {
+                const response = await fetch(`/search?q=${query}`);
+                const suggestions = await response.json();
+                const suggestionsList = document.getElementById("suggestions");
+                suggestionsList.innerHTML = suggestions.map(user => `<li>${user}</li>`).join("");
+            } else {
+                document.getElementById("suggestions").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="search-bar">
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Search for profiles..."
+            oninput="fetchSuggestions()"
+        />
+        <ul id="suggestions" class="suggestions"></ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopr - Login</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Background */
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Heading Styles */
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 2px;
+            animation: fadeIn 3s ease-out, slideIn 2s ease-out;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Animation Definitions */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Styles */
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            background: transparent;
+            color: #fff;
+            font-size: 1.2rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: #00c6ff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00c6ff;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #0072ff;
+        }
+
+        /* Footer Text */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Link to register page */
+        .switch-link {
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome to Loopr</h1>
+        <form action="/auth" method="post">
+            <input type="username" name="uname" placeholder="uname" required>
+            <input type="password" name="pwd" placeholder="pwd" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="/register" class="switch-link">Don't have an account? Register</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Loopr. All Rights Reserved.</p>
+    </div>
+</body>
+</html>
